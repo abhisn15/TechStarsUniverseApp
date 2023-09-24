@@ -1,12 +1,13 @@
 import BottomSheet from '@gorhom/bottom-sheet';
+import {
+  ScrollView
+} from 'react-native-gesture-handler';
 import { Picker } from "@react-native-picker/picker";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   BackHandler,
-  FlatList,
   Image,
   ImageBackground,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -107,11 +108,10 @@ export default function Network() {
     };
   }, []);
 
-
   // callbacks
-  const handleSheetChanges = useCallback((index) => {
-    console.log('handleSheetChanges', index);
-  }, []);
+  // const handleSheetChanges = useCallback((index) => {
+  //   console.log('handleSheetChanges', index);
+  // }, []);
   return (
     <View style={{ backgroundColor: "white" }}>
       <View style={styles.headbar}>
@@ -256,7 +256,6 @@ export default function Network() {
         ref={bottomSheetRef}
         index={1}
         snapPoints={snapPoints}
-        onChange={handleSheetChanges}
       >
         <View style={styles.container}>
           <Text style={{ fontSize: 20, marginBottom: 5 }}>Nearest Accelerator</Text>
