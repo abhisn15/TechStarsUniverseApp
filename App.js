@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 
-import { Image, StyleSheet, Text } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text } from 'react-native';
 import Start from './pages/Start';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
@@ -30,8 +30,8 @@ export default function App() {
         <Stack.Screen name='Home' options={{ headerShown: false }}>
 
           {() => (
-            <Tab.Navigator>
-              <Tab.Screen
+            <Tab.Navigator >
+              <Tab.Screen style={{ paddingBottom: Dimensions.get("screen").width > 360 ? '' : 90 }}
                 name="Network"
                 component={Network}
                 options={{
@@ -40,7 +40,7 @@ export default function App() {
                     <Image source={focused ? require("./assets/network-icon.png") : require("./assets/network-icon-gray.png")}></Image>
                   ),
                   tabBarLabel: ({ focused, color }) => (
-                    <Text style={{ color: focused ? '#39C463' : 'gray' }}>Network</Text> // Mengganti warna teks saat terfokus atau tidak
+                    <Text style={{ color: focused ? '#39C463' : 'gray', marginBottom: Dimensions.get("screen").width > 360 ? '' : 10 }}>Network</Text> // Mengganti warna teks saat terfokus atau tidak
                   ),
                 }}
               />
@@ -53,7 +53,7 @@ export default function App() {
                     <Image source={focused ? require("./assets/discover-icon.png") : require("./assets/discover-icon-gray.png")}></Image>
                   ),
                   tabBarLabel: ({ focused, color }) => (
-                    <Text style={{ color: focused ? '#39C463' : 'gray' }}>Discover</Text> // Mengganti warna teks saat terfokus atau tidak
+                    <Text style={{ color: focused ? '#39C463' : 'gray', marginBottom: Dimensions.get("screen").width > 360 ? '' : 10 }}>Discover</Text> // Mengganti warna teks saat terfokus atau tidak
                   ),
                 }}
               />
@@ -66,7 +66,7 @@ export default function App() {
                     <Image source={focused ? require("./assets/jobs-icon.png") : require("./assets/jobs-icon-gray.png")}></Image>
                   ),
                   tabBarLabel: ({ focused, color }) => (
-                    <Text style={{ color: focused ? '#39C463' : 'gray' }}>Jobs</Text> // Mengganti warna teks saat terfokus atau tidak
+                    <Text style={{ color: focused ? '#39C463' : 'gray', marginBottom: Dimensions.get("screen").width > 360 ? '' : 10 }}>Jobs</Text> // Mengganti warna teks saat terfokus atau tidak
                   ),
                 }}
               />
@@ -79,7 +79,7 @@ export default function App() {
                     <Image source={focused ? require("./assets/profile-icon.png") : require("./assets/profile-icon-gray.png")}></Image>
                   ),
                   tabBarLabel: ({ focused, color }) => (
-                    <Text style={{ color: focused ? '#39C463' : 'gray' }}>Profile</Text> // Mengganti warna teks saat terfokus atau tidak
+                    <Text style={{ color: focused ? '#39C463' : 'gray', marginBottom: Dimensions.get("screen").width > 360 ? '' : 10 }}>Profile</Text> // Mengganti warna teks saat terfokus atau tidak
                   ),
                 }}
               />

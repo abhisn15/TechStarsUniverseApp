@@ -48,8 +48,9 @@ export default function Start({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        height: 1000,
+        height: "100%",
         backgroundColor: 'black',
+        marginBottom: 20
     },
     title: {
         position: 'relative',
@@ -93,10 +94,11 @@ const styles = StyleSheet.create({
         fontFamily: 'sans-serif',
     },
     buttonALL: {
-        display: 'inline-flex',
+        display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        width: "100%",
         gap: 20,
     },
     button: {
@@ -105,8 +107,8 @@ const styles = StyleSheet.create({
         paddingBottom: 14,
         paddingLeft: 10,
         paddingRight: 10,
-        width: 354,
         borderRadius: 5,
+        width: "90%"
     },
     buttonText: {
         color: 'white',
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
         paddingBottom: 14,
         paddingLeft: 10,
         paddingRight: 10,
-        width: 354,
+        width: "90%",
         borderRadius: 5,
     },
     textQuest: {

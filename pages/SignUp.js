@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+    Dimensions,
     Image,
     SafeAreaView,
     ScrollView,
@@ -24,6 +25,7 @@ export default function SignUp({ navigation }) {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState("Select Role");
     const [passwordMatchError, setPasswordMatchError] = useState(false);
+
 
     const handleLoginAsGuest = () => {
         navigation.navigate("Login");
@@ -420,7 +422,7 @@ const styles = StyleSheet.create({
     input: {
         display: "flex",
         padding: 13,
-        width: 353,
+        width: Dimensions.get("screen").width > 370 ? 354 : 320,
         height: 40,
         borderWidth: 2,
         borderTopColor: "rgba(130, 152, 171, 0.50)",
@@ -435,7 +437,7 @@ const styles = StyleSheet.create({
         display: "flex",
         color: "red",
         padding: 13,
-        width: 353,
+        width: Dimensions.get("screen").width > 360 ? 354 : 320,
         height: 40,
         borderWidth: 2,
         borderTopColor: "rgba(130, 152, 171, 0.50)",
@@ -451,6 +453,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         marginTop: 8,
         borderWidth: 2,
+        marginRight: Dimensions.get("screen").width > 360 ? 5 : 46,
         borderTopColor: "rgba(130, 152, 171, 0.50)",
         borderRightColor: "rgba(130, 152, 171, 0.50)",
         borderLeftColor: "rgba(130, 152, 171, 0.50)",
@@ -464,7 +467,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
         padding: 13,
-        width: 353,
+        width: Dimensions.get("screen").width > 360 ? 350 : 320,
         height: 40,
         borderWidth: 2,
         borderTopColor: "rgba(130, 152, 171, 0.50)",
@@ -477,6 +480,7 @@ const styles = StyleSheet.create({
     },
     inputPick: {
         height: 0,
+        width: Dimensions.get("screen").width > 360 ? 350 : 317
     },
     errorInputPick: {
         color: "red",
@@ -496,7 +500,7 @@ const styles = StyleSheet.create({
         paddingBottom: 14,
         paddingLeft: 10,
         paddingRight: 10,
-        width: 354,
+        width: Dimensions.get("screen").width > 360 ? 354 : 320,
         borderRadius: 5,
     },
     buttonText: {

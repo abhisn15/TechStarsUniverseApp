@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+    Dimensions,
     Image,
     SafeAreaView,
     ScrollView,
@@ -326,7 +327,7 @@ const styles = StyleSheet.create({
     input: {
         display: "flex",
         padding: 13,
-        width: 353,
+        width: Dimensions.get("screen").width > 360 ? 354 : 320,
         height: 40,
         borderWidth: 2,
         borderTopColor: "rgba(130, 152, 171, 0.50)",
@@ -341,7 +342,7 @@ const styles = StyleSheet.create({
         display: "flex",
         color: "red",
         padding: 13,
-        width: 353,
+        width: Dimensions.get("screen").width > 360 ? 354 : 320,
         height: 40,
         borderWidth: 2,
         borderTopColor: "rgba(130, 152, 171, 0.50)",
@@ -370,7 +371,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
         padding: 13,
-        width: 353,
+        width: Dimensions.get("screen").width > 360 ? 354 : 320,
         height: 40,
         borderWidth: 2,
         borderTopColor: "rgba(130, 152, 171, 0.50)",
@@ -402,7 +403,7 @@ const styles = StyleSheet.create({
         paddingBottom: 14,
         paddingLeft: 10,
         paddingRight: 10,
-        width: 354,
+        width: Dimensions.get("screen").width > 360 ? 354 : 320,
         borderRadius: 5,
     },
     buttonText: {

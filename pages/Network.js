@@ -90,7 +90,9 @@ export default function Network() {
   const bottomSheetRef = useRef(null);
 
   // variables
-  const snapPoints = useMemo(() => ['25%', '45%'], []);
+  const snapPoints = useMemo(() => ['25%', Dimensions.get("screen").width > 360 ? '45%' : "47.5"], []);
+
+  const snapPointsClck = useMemo(() => ['25%', Dimensions.get("screen").width > 360 ? '50%' : "60"], []);
 
   const toggleSelected = () => {
     setSelectedPlace(!selectedPlace)
@@ -163,17 +165,18 @@ export default function Network() {
           <Text
             style={{
               display: "flex",
+              flexDirection: 'column',
               justifyContent: "center",
               alignItems: "center",
               borderWidth: 2,
               borderColor: "white",
               paddingTop: 4,
               marginLeft: 20,
-              paddingLeft: 28,
+              paddingLeft: Dimensions.get('screen').width > 360 ? 28 : 32,
               paddingRight: 12,
               color: "white",
-              fontSize: 12,
-              width: 120,
+              fontSize: Dimensions.get('screen').width > 360 ? 12 : 16,
+              width: Dimensions.get('screen').width > 360 ? 120 : 120,
               height: 24,
               borderRadius: 18,
             }}
@@ -185,7 +188,7 @@ export default function Network() {
           </Text>
           <TouchableOpacity>
             <Image
-              style={{ width: 20, marginLeft: 38 }}
+              style={{ width: 20, marginLeft: Dimensions.get("screen").width > 360 ? 38 : 48 }}
               source={require("../assets/right-arrow.png")}
             ></Image>
           </TouchableOpacity>
@@ -217,41 +220,36 @@ export default function Network() {
           />
         </MapView>
       </View>
-      {/* <View style={{ display: "flex", alignItems: "center" }}>
-        <Text
-          style={{
-            width: 150,
-            marginBottom: 15,
-            borderWidth: 3,
-            borderTopColor: "#FFFFFB",
-            borderLeftColor: "#FFFFFB",
-            borderRightColor: "#FFFFFB",
-            borderBottomColor: "rgba(130, 152, 171, 0.30)",
-          }}
-        ></Text>
-        <ScrollView vertical showsVerticalScrollIndicator={false}>
-          {Data.map((data) => (
-            data.id === 1 && (
-              <View style={{ height: Dimensions.get('screen').height < 700 ? 250 : 1560, width: "100%" }} key={data.id}>
-                <ImageBackground
-                  source={data.bgimgShow1}
-                  resizeMode="cover"
-                  style={{
-                    width: 355, height: 120, marginTop: 16, marginHorizontal: 20
-                  }}
-                ></ImageBackground>
-                <Text style={{ marginTop: 18, marginHorizontal: 20, fontSize: 24, fontWeight: '700' }}>{data.titleShow1}</Text>
-                <Text style={{ marginTop: 5, marginHorizontal: 20, fontSize: 14 }}>{data.dscShow1}</Text>
-                <TouchableOpacity
-                  style={[styles.button, { backgroundColor: "#39C463", marginTop: 36 }]}
-                >
-                  <Text style={styles.buttonText}>More Info</Text>
-                </TouchableOpacity>
-              </View>
-            )
-          ))}
-        </ScrollView>
-      </View> */}
+      <BottomSheet
+        ref={bottomSheetRef}
+        index={1}
+        snapPoints={snapPointsClck}
+      >
+        <View style={{ display: "flex", alignItems: "center" }}>
+          <ScrollView vertical showsVerticalScrollIndicator={false}>
+            {Data.map((data) => (
+              data.id === 1 && (
+                <View style={{ height: "auto" }} key={data.id}>
+                  <ImageBackground
+                    source={data.bgimgShow1}
+                    resizeMode="cover"
+                    style={{
+                      width: Dimensions.get('screen').width > 360 ? 360 : "49%", height: 120, marginTop: 16, marginHorizontal: 20
+                    }}
+                  ></ImageBackground>
+                  <Text style={{ marginTop: 18, marginHorizontal: 20, fontSize: 24, fontWeight: '700' }}>{data.titleShow1}</Text>
+                  <Text style={{ marginTop: 5, marginHorizontal: 20, fontSize: 14, width: Dimensions.get('screen').width > 360 ? 'auto' : '22%' }}>{data.dscShow1}</Text>
+                  <TouchableOpacity
+                    style={[styles.button, { backgroundColor: "#39C463", marginTop: 36 }]}
+                  >
+                    <Text style={styles.buttonText}>More Info</Text>
+                  </TouchableOpacity>
+                </View>
+              )
+            ))}
+          </ScrollView>
+        </View>
+      </BottomSheet>
       <BottomSheet
         ref={bottomSheetRef}
         index={1}
@@ -345,12 +343,13 @@ const styles = StyleSheet.create({
     borderLeftColor: "rgba(130, 152, 171, 0.50)",
   },
   button: {
-    marginHorizontal: 20,
+    marginLeft: 20,
+    marginRight: 20,
     paddingTop: 14,
     paddingBottom: 14,
     paddingLeft: 10,
     paddingRight: 10,
-    width: 354,
+    width: Dimensions.get('screen').width > 360 ? 354 : 320,
     borderRadius: 3,
   },
   buttonText: {
